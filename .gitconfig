@@ -1,0 +1,6 @@
+# This is Git's per-user configuration file.
+[user]
+	name = iamprem
+	email = mprem@outlook.com
+[core]
+	editor = vim
