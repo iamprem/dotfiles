@@ -1,0 +1,46 @@
+- name: Package  Installation - Update packages.
+  pacman:
+    update_cache: true
+    upgrade: true
+  changed_when: false
+
+- name: Package Installation - Development tools
+  pacman:
+    name:
+      - git
+      - wget
+      - vim
+      - ranger
+      - zsh
+      - thefuck
+      - dmenu
+      - i3
+      - pactl
+      - playerctl
+      - xbindkeys
+      - ttf-font-awesome
+      - rofi
+      - compton
+    state: present
+
+- name: Package Installation - Media tools
+  pacman:
+    name:
+      - flameshot
+      - imagemagick
+      - gimp
+    state: present
+  changed_when: false
+
+- name: Package Installation - AUR packages
+  become: yes
+  become_user: "{{ username }}"
+  expect:
+    command: pamac build --no-confirm {{ item.program }}
+    responses:
+      Password: "{{ password }}"
+  with_items:
+    - { program: 'slack-desktop' }
+    - { program: 'google-chrome' }
+    - { program: 'vscodium-bin' }
+
