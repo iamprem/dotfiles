@@ -4,7 +4,7 @@
     upgrade: true
   changed_when: false
 
-- name: Package Installation - Development tools
+- name: Package Installation - Common tools
   pacman:
     name:
       - git
@@ -12,15 +12,20 @@
       - vim
       - ranger
       - zsh
+      - caffeine
       - thefuck
-      - dmenu
-      - i3
       - pactl
       - playerctl
       - xbindkeys
       - ttf-font-awesome
+      - i3
+      - dmenu
       - rofi
       - compton
+      - lxappearance
+      - xsettingsd
+      - feh
+      - neofetch
     state: present
 
 - name: Package Installation - Media tools
