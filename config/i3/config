@@ -13,7 +13,7 @@ set $ws5 "5"
 
 
 # set font
-font pango: Noto Sans 8
+font pango: Noto Sans 12
 
 # Use Mouse+$sup to drag floating windows to their wanted position
 floating_modifier $sup
@@ -22,6 +22,7 @@ floating_modifier $sup
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 exec --no-startup-id xsettingsd &
 exec --no-startup-id compton -b
+exec slack-desktop
 
 # start a terminal
 bindsym $sup+n exec i3-sensible-terminal
@@ -30,8 +31,8 @@ bindsym $sup+n exec i3-sensible-terminal
 bindsym $sup+q kill
 
 # dmenu & rofi
-bindsym $sup+Shift+space exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
-bindsym $sup+space exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'
+bindsym $sup+Shift+space exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=14'"
+bindsym $sup+space exec rofi -lines 10 -padding 50 -width 50 -show drun -font 'Noto Sans 16'
 
 # apps keybinds
 bindsym Print exec flameshot gui
@@ -169,15 +170,12 @@ client.background           #2f343f
 gaps inner 7
 gaps outer 7
 for_window [class=".*"] border pixel 4
-assign [class=URxvt] 1
-assign [class=Firefox|Transmission-gtk] 2
-assign [class=Nautilus|File-roller] 3
-assign [class=Geany|Evince|Gucharmap|Soffice|libreoffice*] 4
-assign [class=Audacity|Vlc|mpv|Ghb|Xfburn|Gimp*|Inkscape] 5
-assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|Exo-helper*|Lxrandr|Arandr] 6
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
 
 # default workspaces
-assign [class="Slack"] $ws2
+assign [class="Slack|Hexchat"] $ws2
+assign [class=Nautilus] $ws3
+
+
