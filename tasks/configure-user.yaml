@@ -12,3 +12,8 @@
   become: yes
   become_user: "{{ username }}"
   shell: echo "{{ password }}" | chsh -s $(which zsh)
+
+- name: System Configuration - Default locale
+  become: yes
+  become_user: "{{ username }}"
+  shell: localectl set-locale LANG=en_US.UTF-8

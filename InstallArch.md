@@ -6,7 +6,7 @@ mount /dev/sdX1 /mnt
 ```
 ## Install essential packages ##
 ```
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base base-devel linux linux-firmware vim git ansible
 ```
 
 ## Configure the system
