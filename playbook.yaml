@@ -4,7 +4,7 @@
 
   vars:
     username: 'prem'
-    password: ''
+    password: 'sheldon'
     userhome: '/home/{{ username }}'
 
   tasks:
@@ -12,17 +12,6 @@
     when: ansible_facts["os_family"] == "Archlinux"
 
   - include: tasks/configure-user.yaml
-  
-  # - name: Package Installation - Add yaourt repository
-  #   lineinfile:
-  #     path: '/etc/pacman.conf'
-  #     regexp: '{{ item.regexp }}'
-  #     line: '{{ item.line }}'
-  #     state: present
-  #   with_items:
-  #    - { regexp: '\[archlinuxfr\]', line: '[archlinuxfr]' }
-  #    - { regexp: 'SigLevel = Never', line: 'SigLevel = Never' }
-  #    - { regexp: 'Server = http:\/\/repo.archlinux.fr\/\$arch', line: 'Server = http://repo.archlinux.fr/$arch' }
 
   - name: UI Tweak - Enable color for pacman
     lineinfile:

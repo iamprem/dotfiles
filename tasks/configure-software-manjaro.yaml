@@ -40,3 +40,15 @@
   pip:
     name: pexpect  
 
+- name: Package Installation - AUR packages
+  become: yes
+  become_user: "{{ username }}"
+  expect:
+    command: pamac build --no-confirm {{ item.program }}
+    responses:
+      Password: "{{ password }}"
+  with_items:
+    - { program: 'slack-desktop' }
+    - { program: 'google-chrome' }
+    - { program: 'vscodium-bin' }
+
