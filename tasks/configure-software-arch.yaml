@@ -43,16 +43,3 @@
 - name: Install Python dependency
   pip:
     name: pexpect  
-
-- name: Package Installation - AUR packages
-  become: yes
-  become_user: "{{ username }}"
-  expect:
-    command: yay -S --noconfirm {{ item.program }}
-    responses:
-      Password: "{{ password }}"
-  with_items:
-    - { program: 'slack-desktop' }
-    - { program: 'google-chrome' }
-    - { program: 'vscodium-bin' }
-
