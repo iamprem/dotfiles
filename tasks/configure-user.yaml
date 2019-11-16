@@ -16,4 +16,4 @@
 - name: System Configuration - Default locale
   become: yes
   become_user: "{{ username }}"
-  shell: localectl set-locale LANG=en_US.UTF-8
+  shell: echo "{{ password }}" | localectl set-locale LANG=en_US.UTF-8
