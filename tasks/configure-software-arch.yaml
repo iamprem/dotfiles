@@ -25,6 +25,8 @@
       - feh
       - neofetch
       - base-devel
+      - xorg
+      - terminator
     state: present
 
 - name: Package Installation - Media tools
