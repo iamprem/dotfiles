@@ -75,3 +75,5 @@ makepkg -si
 
 ## Change ownership of .config
 chown -R prem:users ~/.config
+
+reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist

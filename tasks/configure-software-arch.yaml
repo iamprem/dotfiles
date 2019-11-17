@@ -10,26 +10,72 @@
       - git
       - wget
       - vim
-      - ranger
       - zsh
       - thefuck
       - pulseaudio
       - playerctl
       - xbindkeys
-      - ttf-font-awesome
-      - dmenu
-      - rofi
-      - compton
       - lxappearance
       - xsettingsd
       - feh
       - neofetch
       - base-devel
-      - xorg
-      - terminator
       - python-pip
       - go
+      - reflector
+      - lightdm
+      - lightdm-gtk-greeter
+      - chromium
+      - firefox
+      - vlc
     state: present
+
+  - name: Package Installation - Media tools
+  pacman:
+    name:
+      - noto-fonts
+      - ttf-ubuntu-font-family
+      - ttf-dejavu 
+      - ttf-freefont 
+      - ttf-liberation 
+      - ttf-droid 
+      - ttf-inconsolata
+      - ttf-roboto
+      - terminus-font 
+      - ttf-font-awesome
+    state: present
+  changed_when: false
+
+  - name: Package Installation - Sound tools
+  pacman:
+    name:
+      - alsa-utils
+      - alsa-plugins
+      - alsa-lib
+      - pavucontrol
+    state: present
+  changed_when: false
+
+  - name: Package Installation - i3 Productivity tools
+  pacman:
+    name:
+      - i3
+      - xorg
+      - xorg-xinit
+      - compton
+      - rxvt-unicode
+      - ranger
+      - rofi
+      - conky
+      - dmenu
+      - urxvt-perls
+      - perl-anyevent-i3
+      - perl-json-xs
+    state: present
+  changed_when: false
+
+
+  
 
 - name: Package Installation - Media tools
   pacman:
