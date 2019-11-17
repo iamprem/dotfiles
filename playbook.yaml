@@ -11,16 +11,14 @@
   - include: tasks/configure-software-arch.yaml
     when: ansible_facts["os_family"] == "Archlinux"
 
-  - include: tasks/configure-user.yaml
+  - include: tasks/configure-software-ubuntu.yml
+    when: ansible_facts["os_family"] == "Debian"
 
-  - name: UI Tweak - Enable color for pacman
-    lineinfile:
-      path: '/etc/pacman.conf'
-      regexp: '^#Color$'
-      line: 'Color'
+  # - include: tasks/configure-user.yaml
 
-  - name: DOTFILES - Copy dot files to user home
-    become_user: "{{ username }}"
-    copy:
-      src: '/home/{{ username }}/dotfiles/config/'
-      dest: '{{ userhome }}/'
+
+  # - name: DOTFILES - Copy dot files to user home
+  #   become_user: "{{ username }}"
+  #   copy:
+  #     src: '/home/{{ username }}/dotfiles/config/'
+  #     dest: '{{ userhome }}/'

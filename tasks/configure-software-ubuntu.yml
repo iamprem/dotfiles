@@ -1,0 +1,70 @@
+- name: Package  Installation - Update packages.
+  apt:
+    update_cache: true
+    upgrade: true
+  changed_when: false
+
+- name: Package Installation - Common tools
+  apt:
+    name:
+      - git
+      - wget
+      - vim
+      - zsh
+      - thefuck
+      - pulseaudio
+      - xbindkeys
+      - lxappearance
+      - xsettingsd
+      - feh
+      - neofetch
+      - python-pip
+      - golang
+      - chromium-browser
+      - firefox
+      - vlc
+    state: present
+
+- name: Package Installation - Media tools
+  apt:
+    name:
+      - fonts-noto
+      - ttf-ubuntu-font-family
+      - fonts-dejavu 
+      - fonts-freefont-ttf
+      - fonts-liberation 
+      - fonts-inconsolata
+      - fonts-roboto
+      - xfonts-terminus
+      - fonts-font-awesome
+    state: present
+  changed_when: false
+
+- name: Package Installation - i3 Productivity tools
+  apt:
+    name:
+      - i3
+      - xorg
+      - compton
+      - rxvt-unicode
+      - ranger
+      - rofi
+      - conky
+      - dmenu
+      - perl-anyevent-i3
+      - perl-json-xs
+    state: present
+  changed_when: false
+
+- name: Package Installation - Media tools
+  apt:
+    name:
+      - flameshot
+      - imagemagick
+      - gimp
+    state: present
+  changed_when: false
+
+- name: Install Python dependency
+  pip:
+    name: pexpect  
