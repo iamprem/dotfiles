@@ -14,7 +14,7 @@
   - include: tasks/configure-software-ubuntu.yml
     when: ansible_facts["os_family"] == "Debian"
 
-  # - include: tasks/configure-user.yaml
+  - include: tasks/configure-user.yaml
 
 
   # - name: DOTFILES - Copy dot files to user home

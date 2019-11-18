@@ -1,0 +1,41 @@
+[global_config]
+  borderless = True
+  enabled_plugins = TerminatorThemes, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = Medallion
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_darkness = 0.07
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Hack 10
+    foreground_color = "#839496"
+    icon_bell = False
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    scrollback_lines = 20000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[Medallion]]
+    background_color = "#1d1908"
+    background_darkness = 0.31
+    background_type = transparent
+    cursor_color = "#d3ba30"
+    font = Hack 10
+    foreground_color = "#cac296"
+    icon_bell = False
+    palette = "#000000:#b64c00:#7c8b16:#d3bd26:#616bb0:#8c5a90:#916c25:#cac29a:#5e5219:#ff9149:#b2ca3b:#ffe54a:#acb8ff:#ffa0ff:#ffbc51:#fed698"
+    scrollback_lines = 20000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
