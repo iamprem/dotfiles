@@ -663,7 +663,7 @@
           "from": {
             "key_code": "l",
             "modifiers": {
-              "mandatory": ["command"],
+              "mandatory": ["control"],
               "optional": ["any"]
             }
           },
