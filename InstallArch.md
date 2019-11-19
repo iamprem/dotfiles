@@ -77,3 +77,9 @@ makepkg -si
 chown -R prem:users ~/.config
 
 reflector --verbose --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+
+## Fix Natual scroll
+```
+vim /usr/share/X11/xorg.conf.d/40-libinput.conf
+options NaturalScrolling "true"
+```

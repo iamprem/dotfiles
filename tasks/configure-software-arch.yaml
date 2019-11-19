@@ -14,17 +14,11 @@
       - thefuck
       - pulseaudio
       - playerctl
-      - xbindkeys
-      - lxappearance
-      - xsettingsd
-      - feh
+      - htop
       - neofetch
       - base-devel
       - python-pip
-      - go
       - reflector
-      - lightdm
-      - lightdm-gtk-greeter
       - chromium
       - firefox
       - vlc
@@ -46,16 +40,6 @@
     state: present
   changed_when: false
 
-- name: Package Installation - Sound tools
-  pacman:
-    name:
-      - alsa-utils
-      - alsa-plugins
-      - alsa-lib
-      - pavucontrol
-    state: present
-  changed_when: false
-
 - name: Package Installation - i3 Productivity tools
   pacman:
     name:
@@ -63,14 +47,10 @@
       - xorg
       - xorg-xinit
       - compton
-      - rxvt-unicode
+      - terminator
       - ranger
+      - feh
       - rofi
-      - conky
-      - dmenu
-      - urxvt-perls
-      - perl-anyevent-i3
-      - perl-json-xs
     state: present
   changed_when: false
 
@@ -85,7 +65,7 @@
 
 - name: Install Python dependency
   pip:
-    name: pexpect  
+    name: pexpect
 
 - name: UI Tweak - Enable color for pacman
   lineinfile:
