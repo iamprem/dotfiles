@@ -1,8 +1,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # set modifier
-set $sup Mod4
-set $alt Mod1
+set $sup Mod1
+set $alt Mod4
 
 # set workspace variables
 set $ws1 "1"
@@ -19,9 +19,13 @@ font pango: Hack 10
 floating_modifier $sup
 
 #autostart
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet --sm-disable
 exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
-# exec --no-startup-id compton -b
+exec --no-startup-id picom -b
+
+# polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 
 # start a terminal
 bindsym $sup+n exec i3-sensible-terminal
@@ -30,8 +34,8 @@ bindsym $sup+n exec i3-sensible-terminal
 bindsym $sup+q kill
 
 # dmenu & rofi
-# bindsym $sup+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=14'"
-bindsym $sup+d exec rofi -show drun
+# bindsym $sup+Shift+space exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=14'"
+bindsym $sup+space exec rofi -show drun
 
 # apps keybinds
 bindsym Print exec flameshot gui
@@ -155,15 +159,14 @@ for_window [class="calculator"] floating enable
 
 # i3 Gaps
 for_window [class="^.*"] border pixel 4
-gaps inner 7
-gaps outer 7
+gaps inner 5
+gaps outer 5
 
 # default workspaces
-assign [class="Slack|Hexchat"] $ws2
+assign [class="Slack|Hexchat"] $ws4
 assign [class=Nautilus] $ws3
-
+assign [class="firefox|Chromium"] $ws2
 
 #autostart programs on specific workspace
-exec --no-startup-id i3-msg 'workspace 2; exec ranger'
-exec --no-startup-id i3-msg 'workspace 2; exec neofetch'
-exec --no-startup-id i3-msg 'workspace 1; exec firefox'
+exec --no-startup-id chromium
+exec --no-startup-id slack
