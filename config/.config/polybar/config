@@ -259,7 +259,7 @@ type = internal/pulseaudio
 
 ; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
 ; Default: true
-use-ui-max = true
+use-ui-max = false
 
 ; Interval for volume increase/decrease (in percent points)
 ; Default: 5
