@@ -12,9 +12,11 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export EDITOR='vim'
 export BROWSER=/usr/bin/google-chrome-stable
+export TERMINAL=/usr/bin/tilix
 
 # Aliases
 alias gstr="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && get status -s && echo)' \;"
+alias cls="clear && printf '\e[3J'"
 
 alias tvon="xrandr --output HDMI-0 --scale 0.666x0.666 --auto --same-as DP-0"
 alias tvoff="xrandr --output HDMI-0 --off; xrandr --output DP-0 --auto"
@@ -23,3 +25,8 @@ alias tvsound="pacmd set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-ste
 
 alias tv-with-sound="tvon && tvsound"
 alias tv-no-sound="tvon && pcsound"
+
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi

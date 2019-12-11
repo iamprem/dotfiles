@@ -1,0 +1,25 @@
+{
+    "name": "CyberPunk",
+    "comment": "Ported for Terminix Colour Scheme",
+    "use-theme-colors": false,
+    "foreground-color": "#c2b7bf",
+    "background-color": "#352651",
+    "palette": [
+		"#0b040e",
+		"#d65f84",
+		"#2fcb99",
+		"#dbca6c",
+		"#2c9fdd",
+		"#c57fdc",
+		"#7fa7d9",
+		"#e2d1de",
+		"#110714",
+		"#d47593",
+		"#33c09d",
+		"#cbbe7a",
+		"#2b9fc8",
+		"#ba8ac9",
+		"#7aadd5",
+		"#c7c4ca"
+    ]
+}
