@@ -40,6 +40,7 @@ call vundle#begin()
 	Plugin 'tpope/vim-fugitive'					" Git
 	
 	"-------------------=== Code Completion and Syntax ===----------
+	Plugin 'tpope/vim-surround'
 	Plugin 'davidhalter/jedi-vim'
 	Plugin 'vim-syntastic/syntastic'
 	Plugin 'mboughaba/i3config.vim'
@@ -127,3 +128,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 " ctrlp customization
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+" NerdTree customization
+nmap <leader>ne :NERDTree<cr>
