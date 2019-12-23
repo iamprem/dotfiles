@@ -1,52 +1,52 @@
-set bs=indent,eol,start		" allow backspacing over everything in insert mode
-set ai						" always set autoindenting on
-set history=50				" keep 50 lines of command line history
-set ruler					" show the cursor position all the time
-set nu              		" line numbering on
-set noerrorbells        	" bye bye bells :)
-set ignorecase          	" search without regards to case
-set laststatus=2			" Always have statusbar showing
-set tabstop=4				" set tab spacing
-set novisualbell			" to disable bell sound
+set bs=indent,eol,start     " allow backspacing over everything in insert mode
+set ai                      " always set autoindenting on
+set history=50              " keep 50 lines of command line history
+set ruler                   " show the cursor position all the time
+set nu                      " line numbering on
+set noerrorbells            " bye bye bells :)
+set ignorecase              " search without regards to case
+set laststatus=2            " Always have statusbar showing
+set tabstop=4               " set tab spacing
+set novisualbell            " to disable bell sound
 set softtabstop=0 noexpandtab
 set shiftwidth=4
 set encoding=utf-8
-set clipboard=unnamed		" Share system's clipboard instead of using vim specific one (*)
-set hidden confirm			" Allow keep changes to unwritten buffer and confirm before deleting the buffer
-"set autowriteall			" Auto save file on most occasions
-let mapleader=" "			" Set space as the leader key
+set clipboard=unnamed       " Share system's clipboard instead of using vim specific one (*)
+set hidden confirm          " Allow keep changes to unwritten buffer and confirm before deleting the buffer
+"set autowriteall           " Auto save file on most occasions
+let mapleader=" "           " Set space as the leader key
 
 set nocompatible            " be iMproved, required
-filetype off               	" required
+filetype off                " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 
-	"core plugins
-	Plugin 'gmarik/Vundle.vim'
+    "core plugins
+    Plugin 'gmarik/Vundle.vim'
 
-	"-------------------=== Code/Project navigation ===-------------
+    "-------------------=== Code/Project navigation ===-------------
     Plugin 'scrooloose/nerdtree'                " Project and file navigation
-	Plugin 'ryanoasis/vim-devicons'				" Icons for files
+    Plugin 'ryanoasis/vim-devicons'             " Icons for files
     Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'ctrlpvim/ctrlp.vim'                 " Fast transitions on project files
 
-	"-------------------=== Other ===-------------------------------
+    "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
-	Plugin 'vim-airline/vim-airline-themes'		" Airline themes
-	Plugin 'tpope/vim-fugitive'					" Git
-	
-	"-------------------=== Code Completion and Syntax ===----------
-	Plugin 'tpope/vim-surround'
-	Plugin 'davidhalter/jedi-vim'
-	Plugin 'vim-syntastic/syntastic'
-	Plugin 'mboughaba/i3config.vim'
+    Plugin 'vim-airline/vim-airline-themes'     " Airline themes
+    Plugin 'tpope/vim-fugitive'                 " Git
+
+    "-------------------=== Code Completion and Syntax ===----------
+    Plugin 'tpope/vim-surround'
+    Plugin 'davidhalter/jedi-vim'
+    Plugin 'vim-syntastic/syntastic'
+    Plugin 'mboughaba/i3config.vim'
 
 
-call vundle#end()			" required
+call vundle#end()           " required
 
 filetype plugin indent on   " required
 syntax on
@@ -63,9 +63,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Buffer navigation shortcuts
-nnoremap <silent> <tab>    	:if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap <silent> <s-tab>  	:if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
-nnoremap <Leader>b 			:ls<CR>:b<Space>
+nnoremap <silent> <tab>     :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap <silent> <s-tab>   :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+nnoremap <Leader>b          :ls<CR>:b<Space>
 
 " Enable folding
 set foldmethod=indent
