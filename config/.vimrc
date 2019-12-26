@@ -7,14 +7,15 @@ set noerrorbells            " bye bye bells :)
 set ignorecase              " search without regards to case
 set laststatus=2            " Always have statusbar showing
 set tabstop=4               " set tab spacing
+set softtabstop=0 expandtab " insert spaces when tab key pressed
+set shiftwidth=4            " number of space characters inserted for indentation
 set novisualbell            " to disable bell sound
-set softtabstop=0 noexpandtab
-set shiftwidth=4
 set encoding=utf-8
 set clipboard=unnamed       " Share system's clipboard instead of using vim specific one (*)
 set hidden confirm          " Allow keep changes to unwritten buffer and confirm before deleting the buffer
-"set autowriteall           " Auto save file on most occasions
 let mapleader=" "           " Set space as the leader key
+set lcs=tab:▶\              " Set trianlge as the list character for tab to show on list command
+set invlist                 " Toggle list option to show invisible characters (particularly tabs as defined above)
 
 set nocompatible            " be iMproved, required
 filetype off                " required
@@ -32,25 +33,29 @@ call vundle#begin()
     Plugin 'ryanoasis/vim-devicons'             " Icons for files
     Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'ctrlpvim/ctrlp.vim'                 " Fast transitions on project files
+    Plugin 'christoomey/vim-tmux-navigator'     " Seamless navigation between tmux and vim panes
 
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
+    Plugin 'morhetz/gruvbox'
     Plugin 'flazz/vim-colorschemes'             " Colorschemes
     Plugin 'vim-airline/vim-airline-themes'     " Airline themes
     Plugin 'tpope/vim-fugitive'                 " Git
 
     "-------------------=== Code Completion and Syntax ===----------
     Plugin 'tpope/vim-surround'
-    Plugin 'davidhalter/jedi-vim'
-    Plugin 'vim-syntastic/syntastic'
+    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+    Plugin 'Chiel92/vim-autoformat'
     Plugin 'mboughaba/i3config.vim'
-
 
 call vundle#end()           " required
 
 filetype plugin indent on   " required
 syntax on
 
+" Colorschemes config
+colorscheme gruvbox
 
 "split direction
 set splitbelow
@@ -59,7 +64,7 @@ set splitright
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
+nnoremap <C-L> <C-W><C-L>   " TODO: Fix console clear issue with zsh and bash
 nnoremap <C-H> <C-W><C-H>
 
 " Buffer navigation shortcuts
@@ -72,6 +77,9 @@ set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
+" Auto delete trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Auto indentation
 au BufNewFile,BufRead *.py
     \ set tabstop=4
@@ -81,7 +89,7 @@ au BufNewFile,BufRead *.py
     \ autoindent
     \ fileformat=unix
 
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2
     \ softtabstop=2
     \ shiftwidth=2
@@ -130,4 +138,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " NerdTree customization
-nmap <leader>ne :NERDTree<cr>
+nmap <leader>ne :NERDTreeToggle<cr>
+
+" Start NerdTree on start up
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Close vim if last window open is nerd tree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
