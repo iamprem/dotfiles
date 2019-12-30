@@ -7,7 +7,7 @@ set noerrorbells            " bye bye bells :)
 set ignorecase              " search without regards to case
 set laststatus=2            " Always have statusbar showing
 set tabstop=4               " set tab spacing
-set softtabstop=0 expandtab " insert spaces when tab key pressed
+set softtabstop=4 expandtab " insert spaces when tab key pressed
 set shiftwidth=4            " number of space characters inserted for indentation
 set novisualbell            " to disable bell sound
 set encoding=utf-8
@@ -68,9 +68,10 @@ nnoremap <C-L> <C-W><C-L>   " TODO: Fix console clear issue with zsh and bash
 nnoremap <C-H> <C-W><C-H>
 
 " Buffer navigation shortcuts
-nnoremap <silent> <tab>     :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap <silent> <s-tab>   :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+nnoremap <silent><Leader>bn :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap <silent><Leader>bp :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 nnoremap <Leader>b          :ls<CR>:b<Space>
+nnoremap <C-c>              :bp\|bd #<CR>
 
 " Enable folding
 set foldmethod=indent
@@ -146,3 +147,32 @@ nmap <leader>ne :NERDTreeToggle<cr>
 
 " Close vim if last window open is nerd tree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Hide files in nerd tree
+set wildignore+=*.pyc,*.o,*.obj,*.svn,*.swp,*.class,*.hg,*.DS_Store
+let NERDTreeRespectWildIgnore=1
+
+" coc.nvim configurations
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
